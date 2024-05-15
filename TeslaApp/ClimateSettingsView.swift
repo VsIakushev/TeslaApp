@@ -18,6 +18,7 @@ struct ClimateSettingsView: View {
     
     @State var isClimateControlsIsEnabled = true
     @State var isSettingsExpanded = true
+    @State var showSupportAlert = false
     
     var header: some View {
         HStack {
@@ -38,7 +39,7 @@ struct ClimateSettingsView: View {
             Spacer()
             Button {
                 withAnimation {
-                    isClimateControlsIsEnabled.toggle()
+                    showSupportAlert.toggle()
                 }
             } label: {
                 Image("gear")
@@ -52,6 +53,42 @@ struct ClimateSettingsView: View {
     
     var gradient: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
+    }
+    
+    private var alertView: some View {
+        ZStack {
+         BackgroundView()
+                .cornerRadius(25)
+            VStack {
+                Text("Need help?")
+                    .foregroundColor(.white)
+                    .font(.title3)
+                    .padding()
+                if let url = URL(string: "https://www.tesla.com/support ") {
+                    Link(destination: url) {
+                        Text("Tesla Support")
+                            .font(.title3)
+                            .bold()
+                    }
+                        .padding()
+                }
+                    
+                Button(action: {
+                    withAnimation {
+                        showSupportAlert = false
+                    }
+                }, label: {
+                    Text("Close")
+                        .foregroundColor(.gray)
+                        .font(.title3)
+                        .padding()
+                })
+            }
+        }
+        .frame(width: 300, height: 250)
+        .shadow(color: .white.opacity(0.15), radius: 5, x: -5, y: -5)
+        .shadow(color: .black.opacity(0.35), radius: 5, x: 5, y: 5)
+        .padding(.top, 150)
     }
     
     var settingsView: some View {
@@ -156,17 +193,22 @@ struct ClimateSettingsView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             BackgroundView()
+            if showSupportAlert {
+                alertView
+                    .transition(.move(edge: .top).combined(with: .scale(scale: 0.1, anchor: .topTrailing)).combined(with: .opacity))
+                    .zIndex(1)
+            }
             VStack {
                 header
                 Spacer().frame(height: 100)
                 TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, progressColor: $progressColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
-                
+        
                 settingsView
-
                 Spacer()
             }
+            .blur(radius: showSupportAlert ? 5 : 0)
         }
     }
     
