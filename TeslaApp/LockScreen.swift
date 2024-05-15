@@ -41,8 +41,7 @@ struct LockScreen: View {
             isSettingsShown.toggle()
         } label: {
             Image("gear")
-                .padding(12)
-                .padding(.top, 7)
+                .padding()
                 .neomorphismUnSelectedSphericButton()
                 .neomorphismUnSelectedSperic()
         }

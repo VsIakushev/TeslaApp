@@ -16,7 +16,8 @@ struct ClimateSettingsView: View {
     @State var minTemperature = 15.0
     @State var maxTemperature = 30.0
     
-    @State var climateControlsIsEnabled = true
+    @State var isClimateControlsIsEnabled = true
+    @State var isSettingsExpanded = true
     
     var header: some View {
         HStack {
@@ -37,17 +38,121 @@ struct ClimateSettingsView: View {
             Spacer()
             Button {
                 withAnimation {
-                    climateControlsIsEnabled.toggle()
+                    isClimateControlsIsEnabled.toggle()
                 }
             } label: {
                 Image("gear")
-                    .padding(12)
-                    .padding(.top, 7)
+                    .padding(15)
                     .neomorphismUnSelectedSphericButton()
                     .neomorphismUnSelectedSperic()
             }
         }
         .padding(.horizontal, 40)
+    }
+    
+    var gradient: LinearGradient {
+        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
+    }
+    
+    var settingsView: some View {
+        DisclosureGroup(isExpanded: $isSettingsExpanded) {
+            HStack {
+                Text("Ac")
+                    .font(.system(size: 19))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .opacity(0.6)
+                    .padding(.horizontal)
+                    .frame(width:  80)
+                    
+                Button(action: {
+                    isClimateControlsIsEnabled.toggle()
+                }, label: {
+                    Image("ac")
+                        .padding()
+                        .neomorphismUnSelectedSphericButton()
+                        .neomorphismUnSelectedSperic()
+                        .overlay {
+                            Circle()
+                                .stroke(gradient, lineWidth: 2)
+                                .opacity(isClimateControlsIsEnabled ? 1 : 0)
+                        }
+                })
+                Spacer()
+                sliderView(value: $temperature, minSliderValue: $minTemperature, maxSliderValue: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
+                    .padding(.trailing)
+            }
+            .padding(.top, 10)
+            
+            HStack {
+                Text("Fan")
+                    .font(.system(size: 19))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .opacity(0.6)
+                    .padding(.horizontal)
+                    .frame(width:  80)
+                Button(action: {}, label: {
+                    Image("fan")
+                        .padding()
+                        .neomorphismUnSelectedSphericButton()
+                        .neomorphismUnSelectedSperic()
+                })
+                Spacer()
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                    .padding(.trailing)
+            }
+            .padding(.top, 10)
+            
+            HStack {
+                Text("Heat")
+                    .font(.system(size: 19))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .opacity(0.6)
+                    .padding(.horizontal)
+                    .frame(width:  80)
+                Button(action: {}, label: {
+                    Image("heat")
+                        .padding()
+                        .neomorphismUnSelectedSphericButton()
+                        .neomorphismUnSelectedSperic()
+                })
+                Spacer()
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                    .padding(.trailing)
+            }
+            .padding(.top, 10)
+            
+            HStack {
+                Text("Auto")
+                    .font(.system(size: 19))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .opacity(0.6)
+                    .padding(.horizontal)
+                    .frame(width:  80)
+                Button(action: {}, label: {
+                    Image("auto")
+                        .padding()
+                        .neomorphismUnSelectedSphericButton()
+                        .neomorphismUnSelectedSperic()
+                })
+                Spacer()
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                    .padding(.trailing)
+            }
+            .padding(.top, 10)
+            .padding(.bottom)
+            }
+        
+            label: {
+                Text("Climate control")
+            }
+            .accentColor(.white.opacity(0.6))
+            .padding(15)
+        
+        
     }
     
     var body: some View {
@@ -56,9 +161,10 @@ struct ClimateSettingsView: View {
             VStack {
                 header
                 Spacer().frame(height: 100)
-                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, progressColor: $progressColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $climateControlsIsEnabled)
+                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, progressColor: $progressColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
                 
-                sliderView(value: $temperature, minSliderValue: $minTemperature, maxSliderValue: $maxTemperature, isEnabled: $climateControlsIsEnabled)
+                settingsView
+
                 Spacer()
             }
         }
