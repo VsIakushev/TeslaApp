@@ -12,6 +12,7 @@ struct sliderView: View {
     @Binding var minSliderValue: Double
     @Binding var maxSliderValue: Double
     @Binding var isEnabled: Bool
+    @Binding var interfaceColor: Color
     
     @State private var sliderWidth: CGFloat = 182
     
@@ -22,7 +23,7 @@ struct sliderView: View {
                 .frame(width: sliderWidth, height: 8)
             
             Capsule()
-                .fill(LinearGradient(colors: [.gradientBottom, .gradientTop], startPoint: .bottom, endPoint: .top))
+                .fill(LinearGradient(colors: [interfaceColor.opacity(0.5), interfaceColor], startPoint: .top, endPoint: .bottom))
                 .frame(width: calculateOffset(), height: 8)
                 .opacity(isEnabled ? 1 : 0)
             

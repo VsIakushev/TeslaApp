@@ -18,6 +18,7 @@
 		572550502BF3FD71007DA2C6 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725504F2BF3FD71007DA2C6 /* BackgroundView.swift */; };
 		572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */; };
 		572550562BF433E3007DA2C6 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550552BF433E3007DA2C6 /* SliderView.swift */; };
+		5725505C2BF4843F007DA2C6 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5725504F2BF3FD71007DA2C6 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTwisterView.swift; sourceTree = "<group>"; };
 		572550552BF433E3007DA2C6 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				5725504F2BF3FD71007DA2C6 /* BackgroundView.swift */,
 				572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */,
 				572550552BF433E3007DA2C6 /* SliderView.swift */,
+				5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */,
 			);
 			path = "Additional Views";
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				572550482BF3274E007DA2C6 /* LockScreen.swift in Sources */,
+				5725505C2BF4843F007DA2C6 /* BottomSheetView.swift in Sources */,
 				572550382BF2FFAC007DA2C6 /* SettingsView.swift in Sources */,
 				572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */,
 				572550562BF433E3007DA2C6 /* SliderView.swift in Sources */,

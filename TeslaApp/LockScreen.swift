@@ -49,10 +49,11 @@ struct LockScreen: View {
     
     var welcomeLabelView: some View {
         VStack {
-            Text("Hi")
+            Text("Hi, Vitalii")
                 .foregroundColor(.white)
                 .opacity(isLocked ? 0 : 0.7)
                 .font(.title3)
+                .bold()
             Text("Welcome Back")
                 .foregroundColor(.white)
                 .opacity(isLocked ? 0 : 1)
@@ -84,7 +85,7 @@ struct LockScreen: View {
                 
                 HStack {
                     Text(isLocked ? "Unlock" : "Lock")
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.7))
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .padding(.leading, 30)

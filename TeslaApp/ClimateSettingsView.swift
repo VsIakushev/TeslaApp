@@ -11,19 +11,22 @@ struct ClimateSettingsView: View {
     
     @State private var temperature = 15.0
     @State private var circleProgress: CGFloat = 0.1
-    @State private var progressColor: Color = .gradientTop
     
     @State var minTemperature = 15.0
     @State var maxTemperature = 30.0
     
-    @State var isClimateControlsIsEnabled = true
+    @State var isClimateControlsIsEnabled = false
     @State var isSettingsExpanded = true
     @State var showSupportAlert = false
+    
+    @State var interfaceColor: Color = .gradientTop
     
     var header: some View {
         HStack {
             Button {
-                presentation.wrappedValue.dismiss()
+                withAnimation {
+                    presentation.wrappedValue.dismiss()
+                }
             } label: {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.gray)
@@ -89,6 +92,7 @@ struct ClimateSettingsView: View {
         .shadow(color: .white.opacity(0.15), radius: 5, x: -5, y: -5)
         .shadow(color: .black.opacity(0.35), radius: 5, x: 5, y: 5)
         .padding(.top, 150)
+        .offset(y: 180)
     }
     
     var settingsView: some View {
@@ -103,7 +107,9 @@ struct ClimateSettingsView: View {
                     .frame(width:  80)
                     
                 Button(action: {
-                    isClimateControlsIsEnabled.toggle()
+                    withAnimation {
+                        isClimateControlsIsEnabled.toggle()
+                    }
                 }, label: {
                     Image("ac")
                         .padding()
@@ -116,7 +122,7 @@ struct ClimateSettingsView: View {
                         }
                 })
                 Spacer()
-                sliderView(value: $temperature, minSliderValue: $minTemperature, maxSliderValue: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
+                sliderView(value: $temperature, minSliderValue: $minTemperature, maxSliderValue: $maxTemperature, isEnabled: $isClimateControlsIsEnabled, interfaceColor: $interfaceColor)
                     .padding(.trailing)
             }
             .padding(.top, 10)
@@ -136,7 +142,7 @@ struct ClimateSettingsView: View {
                         .neomorphismUnSelectedSperic()
                 })
                 Spacer()
-                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false), interfaceColor: $interfaceColor)
                     .padding(.trailing)
             }
             .padding(.top, 10)
@@ -156,7 +162,7 @@ struct ClimateSettingsView: View {
                         .neomorphismUnSelectedSperic()
                 })
                 Spacer()
-                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false), interfaceColor: $interfaceColor)
                     .padding(.trailing)
             }
             .padding(.top, 10)
@@ -176,7 +182,7 @@ struct ClimateSettingsView: View {
                         .neomorphismUnSelectedSperic()
                 })
                 Spacer()
-                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false))
+                sliderView(value: .constant(0), minSliderValue: .constant(0), maxSliderValue: .constant(15), isEnabled: .constant(false), interfaceColor: $interfaceColor)
                     .padding(.trailing)
             }
             .padding(.top, 10)
@@ -203,12 +209,16 @@ struct ClimateSettingsView: View {
             VStack {
                 header
                 Spacer().frame(height: 100)
-                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, progressColor: $progressColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
+                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, interfaceColor: $interfaceColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
         
                 settingsView
+                
                 Spacer()
             }
+            .offset(y: 180)
             .blur(radius: showSupportAlert ? 5 : 0)
+            
+            BottomSheetView(isAcOn: $isClimateControlsIsEnabled, color: $interfaceColor, temperature: $temperature, minTemperature: $minTemperature, maxTemperature: $maxTemperature)
         }
     }
     

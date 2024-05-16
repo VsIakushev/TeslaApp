@@ -11,7 +11,7 @@ struct TemperatureTwisterView: View {
     
     @Binding var temperature: Double
     @Binding var circleProgress: CGFloat
-    @Binding var progressColor: Color
+    @Binding var interfaceColor: Color
     
     @Binding var minTemperature: Double
     @Binding var maxTemperature: Double
@@ -45,10 +45,10 @@ struct TemperatureTwisterView: View {
                 
             Circle()
                 .trim(from: 0, to: calculateCircleProgress())
-                .stroke(progressColor, style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                .stroke(interfaceColor, style: StrokeStyle(lineWidth: 20, lineCap: .round))
                 .frame(width: 170)
                 .rotationEffect(.degrees(-90))
-                .shadow(color: .cyan, radius: 13)
+                .shadow(color: interfaceColor, radius: 13)
                 .opacity(isEnabled ? 1 : 0)
         }
     }
@@ -66,5 +66,5 @@ struct TemperatureTwisterView: View {
 }
 
 #Preview {
-    TemperatureTwisterView(temperature: .constant(30), circleProgress: .constant(0.6), progressColor: .constant(.gradientTop), minTemperature: .constant(15), maxTemperature: .constant(30), isEnabled: .constant(true))
+    TemperatureTwisterView(temperature: .constant(30), circleProgress: .constant(0.6), interfaceColor: .constant(.gradientTop), minTemperature: .constant(15), maxTemperature: .constant(30), isEnabled: .constant(true))
 }

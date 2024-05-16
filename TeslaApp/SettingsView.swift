@@ -34,7 +34,10 @@ struct SettingsView: View {
                     .font(.system(size: 28))
                     .bold()
                     .foregroundStyle(.white)
-                Text("187 km")
+                HStack {
+                    Image(systemName: "battery.50percent")
+                    Text("187 km")
+                }
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
                     .opacity(0.4)
@@ -56,6 +59,10 @@ struct SettingsView: View {
     
     var gradient: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
+    }
+    
+    var gradientButton: LinearGradient {
+        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
     }
     
     var controllPanelView: some View {
@@ -95,16 +102,19 @@ struct SettingsView: View {
             HStack {
                 Label {
                     Text(isCarClose ? "Close" : "Open")
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.7))
                         .frame(width: 120)
                 } icon: {
                     Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
-                        .renderingMode(.template)
-                        .neomorphismUsSelectedCircleStyle()
+                        .padding()
+                        .foregroundStyle(gradientButton)
+                        .neomorphismUnSelectedSphericButton()
+                        .neomorphismUnSelectedSperic()
                 }
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 50).fill(.appBackground))
+//            .neomorphismUnSelectedSperic()
             .neomorphismSelectedStyle()
         }
         .frame(width: 300)
