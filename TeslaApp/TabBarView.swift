@@ -81,7 +81,13 @@ struct TabBarView: View {
                             })
                             
                             Spacer()
-                                .frame(width: 90)
+                                .frame(width: 11)
+                            
+                            PlusButton()
+                                .offset(y: -55)
+                            
+                            Spacer()
+                                .frame(width: 11)
                             
                             Button(action: {
                                 withAnimation(.easeInOut(duration: 0.4)) {

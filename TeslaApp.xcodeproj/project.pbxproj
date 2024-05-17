@@ -29,6 +29,7 @@
 		572551062BF7E381007DA2C6 /* SuperchargersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572551052BF7E381007DA2C6 /* SuperchargersView.swift */; };
 		57A4C57C2BF7FEAD005E88F4 /* Supercharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57B2BF7FEAD005E88F4 /* Supercharger.swift */; };
 		57A4C57E2BF811E0005E88F4 /* ChargerCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57D2BF811E0005E88F4 /* ChargerCityView.swift */; };
+		57A4C5802BF81B60005E88F4 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57F2BF81B60005E88F4 /* PlusButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		572551052BF7E381007DA2C6 /* SuperchargersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperchargersView.swift; sourceTree = "<group>"; };
 		57A4C57B2BF7FEAD005E88F4 /* Supercharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supercharger.swift; sourceTree = "<group>"; };
 		57A4C57D2BF811E0005E88F4 /* ChargerCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargerCityView.swift; sourceTree = "<group>"; };
+		57A4C57F2BF81B60005E88F4 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */,
 				572550552BF433E3007DA2C6 /* SliderView.swift */,
 				5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */,
+				57A4C57F2BF81B60005E88F4 /* PlusButton.swift */,
 			);
 			path = "Additional Views";
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				572550D82BF6DB09007DA2C6 /* InDevelopingView.swift in Sources */,
 				572550D22BF6CB4B007DA2C6 /* TabBarBackgroundView.swift in Sources */,
 				572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */,
+				57A4C5802BF81B60005E88F4 /* PlusButton.swift in Sources */,
 				572550562BF433E3007DA2C6 /* SliderView.swift in Sources */,
 				57A4C57C2BF7FEAD005E88F4 /* Supercharger.swift in Sources */,
 				572550442BF313CD007DA2C6 /* Buttons.swift in Sources */,
