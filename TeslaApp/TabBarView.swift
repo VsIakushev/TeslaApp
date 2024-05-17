@@ -25,7 +25,7 @@ struct TabBarView: View {
             case 0:
                 SettingsView()
             case 1 :
-                BatteryView()
+                ChargingView()
             case 2:
                 UnderDevelopmentView()
             case 3:

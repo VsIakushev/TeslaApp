@@ -47,3 +47,49 @@ struct sliderView: View {
         
     }
 }
+
+struct batterySliderView: View {
+    @Binding var value: CGFloat
+    @State private var minSliderValue: Double = 0
+    @State private var maxSliderValue: Double = 1
+    
+    @State private var sliderWidth: CGFloat = 270
+    
+    var body: some View {
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
+            Capsule()
+                .fill(LinearGradient(colors: [.unlockedTop, .white.opacity(0.3)], startPoint: .top, endPoint: .bottom))
+                .frame(width: sliderWidth, height: 9)
+            
+            Image(systemName: "triangle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 18)
+                .foregroundStyle(LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom))
+                .offset(x: calculateOffset() - 12)
+                .shadow(color: .white.opacity(0.05), radius: 5, x: -3, y: -3)
+                .shadow(color: .black.opacity(0.15), radius: 5, x: 3, y: 3)
+                .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        let percentage = value.location.x / sliderWidth
+                        let newValue = percentage * (maxSliderValue - minSliderValue) + minSliderValue
+                        self.value = min(max(newValue, minSliderValue), maxSliderValue)
+                    }
+                )
+        }
+    }
+    
+    private func calculateOffset() -> CGFloat {
+       return CGFloat((value - minSliderValue) / (maxSliderValue - minSliderValue) * sliderWidth)
+        
+    }
+}
+
+#Preview {
+    VStack {
+        
+        sliderView(value: .constant(17), minSliderValue: .constant(10), maxSliderValue: .constant(20), isEnabled: .constant(true), interfaceColor: .constant(.cyan))
+        batterySliderView(value: .constant(0.3))
+    }
+}

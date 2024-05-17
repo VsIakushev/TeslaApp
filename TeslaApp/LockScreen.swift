@@ -40,7 +40,9 @@ struct LockScreen: View {
     
     var settingsButton: some View {
         Button {
-            isSettingsShown.toggle()
+            withAnimation(.easeOut(duration: 1)) {
+                isSettingsShown.toggle()
+            }
         } label: {
             Image("gear")
                 .padding()
@@ -75,7 +77,7 @@ struct LockScreen: View {
                 
                 if isLocked {
                     RoundedRectangle(cornerRadius: 40)
-                        .fill(isLocked ? .appBackground.opacity(0.2) : .appBackground)
+                        .fill(isLocked ? .appBackground.opacity(0.3) : .appBackground)
                         .neomorphismUnSelectedStyle()
                         .frame(width: 180, height: 80)
                 } else {
