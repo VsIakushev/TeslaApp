@@ -92,7 +92,6 @@ struct ClimateSettingsView: View {
         .shadow(color: .white.opacity(0.15), radius: 5, x: -5, y: -5)
         .shadow(color: .black.opacity(0.35), radius: 5, x: 5, y: 5)
         .padding(.top, 150)
-        .offset(y: 180)
     }
     
     var settingsView: some View {
@@ -215,10 +214,14 @@ struct ClimateSettingsView: View {
                 
                 Spacer()
             }
-            .offset(y: 180)
             .blur(radius: showSupportAlert ? 5 : 0)
+            .disabled(showSupportAlert)
             
+        }
+        .overlay {
             BottomSheetView(isAcOn: $isClimateControlsIsEnabled, color: $interfaceColor, temperature: $temperature, minTemperature: $minTemperature, maxTemperature: $maxTemperature)
+                .blur(radius: showSupportAlert ? 5 : 0)
+                .disabled(showSupportAlert)
         }
     }
     

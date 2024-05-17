@@ -114,7 +114,6 @@ struct SettingsView: View {
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 50).fill(.appBackground))
-//            .neomorphismUnSelectedSperic()
             .neomorphismSelectedStyle()
         }
         .frame(width: 300)

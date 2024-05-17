@@ -19,6 +19,11 @@
 		572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */; };
 		572550562BF433E3007DA2C6 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550552BF433E3007DA2C6 /* SliderView.swift */; };
 		5725505C2BF4843F007DA2C6 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */; };
+		572550CE2BF691F3007DA2C6 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550CD2BF691F3007DA2C6 /* LoadingView.swift */; };
+		572550D22BF6CB4B007DA2C6 /* TabBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D12BF6CB4B007DA2C6 /* TabBarBackgroundView.swift */; };
+		572550D42BF6CCA4007DA2C6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D32BF6CCA4007DA2C6 /* TabBarView.swift */; };
+		572550D62BF6CD1F007DA2C6 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D52BF6CD1F007DA2C6 /* BatteryView.swift */; };
+		572550D82BF6DB09007DA2C6 /* InDevelopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTwisterView.swift; sourceTree = "<group>"; };
 		572550552BF433E3007DA2C6 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		572550CD2BF691F3007DA2C6 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		572550D12BF6CB4B007DA2C6 /* TabBarBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBackgroundView.swift; sourceTree = "<group>"; };
+		572550D32BF6CCA4007DA2C6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		572550D52BF6CD1F007DA2C6 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDevelopingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,10 @@
 				572550472BF3274E007DA2C6 /* LockScreen.swift */,
 				572550372BF2FFAC007DA2C6 /* SettingsView.swift */,
 				5725504B2BF3FB8E007DA2C6 /* ClimateSettingsView.swift */,
+				572550CD2BF691F3007DA2C6 /* LoadingView.swift */,
+				572550D32BF6CCA4007DA2C6 /* TabBarView.swift */,
+				572550D52BF6CD1F007DA2C6 /* BatteryView.swift */,
+				572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */,
 				5725504D2BF3FD32007DA2C6 /* Additional Views */,
 				5725504E2BF3FD3D007DA2C6 /* Supporting Files */,
 				572550392BF2FFAE007DA2C6 /* Assets.xcassets */,
@@ -91,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				5725504F2BF3FD71007DA2C6 /* BackgroundView.swift */,
+				572550D12BF6CB4B007DA2C6 /* TabBarBackgroundView.swift */,
 				572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */,
 				572550552BF433E3007DA2C6 /* SliderView.swift */,
 				5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */,
@@ -177,9 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572550D62BF6CD1F007DA2C6 /* BatteryView.swift in Sources */,
 				572550482BF3274E007DA2C6 /* LockScreen.swift in Sources */,
 				5725505C2BF4843F007DA2C6 /* BottomSheetView.swift in Sources */,
+				572550D42BF6CCA4007DA2C6 /* TabBarView.swift in Sources */,
 				572550382BF2FFAC007DA2C6 /* SettingsView.swift in Sources */,
+				572550CE2BF691F3007DA2C6 /* LoadingView.swift in Sources */,
+				572550D82BF6DB09007DA2C6 /* InDevelopingView.swift in Sources */,
+				572550D22BF6CB4B007DA2C6 /* TabBarBackgroundView.swift in Sources */,
 				572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */,
 				572550562BF433E3007DA2C6 /* SliderView.swift in Sources */,
 				572550442BF313CD007DA2C6 /* Buttons.swift in Sources */,

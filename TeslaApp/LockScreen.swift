@@ -11,6 +11,7 @@ struct LockScreen: View {
     
     @State private var isLocked = true
     @State private var isSettingsShown = false
+    @State private var showLoadingScreen = true
     
     var gradientButton: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
@@ -30,9 +31,10 @@ struct LockScreen: View {
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: UIScreen.main.bounds.width)
             .frame(height: 260)
+            .offset(y: isLocked ? 0 : 30)
         
             .shadow(color: isLocked ? .black : .black, radius: 40, x: 0, y: 0)
-            .shadow(color: isLocked ? .black : .unlockedCarGradient, radius: 50, x: 0, y: -30)
+            .shadow(color: isLocked ? .black : .unlockedCarGradient.opacity(0.5), radius: 50, x: 0, y: -15)
             
     }
     
@@ -65,11 +67,12 @@ struct LockScreen: View {
     
     var lockButtonView: some View {
         Button {
-            withAnimation {
+            withAnimation(.easeOut(duration: 1.5)) {
                 isLocked.toggle()
             }
         } label: {
             ZStack {
+                
                 if isLocked {
                     RoundedRectangle(cornerRadius: 40)
                         .fill(isLocked ? .appBackground.opacity(0.2) : .appBackground)
@@ -106,25 +109,39 @@ struct LockScreen: View {
     
     var body: some View {
         ZStack {
-            isLocked ? lockedGradient : unlockedGradient
             
-            VStack {
-                HStack {
-                    Spacer()
-                    settingsButton
-                    .padding(20)
-                    .padding(.trailing, 20)
-                }
-                .padding(.top,65)
+            if showLoadingScreen {
+                LoadingView()
+            } else {
                 
-                welcomeLabelView
-                carImage
-                Spacer()
-                lockButtonView
+                isLocked ? lockedGradient : unlockedGradient
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        settingsButton
+                            .padding(20)
+                            .padding(.trailing, 20)
+                    }
+                    .padding(.top,65)
+                    
+                    welcomeLabelView
+                    carImage
+                    Spacer()
+                    lockButtonView
+                }
+            }
+            
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.6) {
+                withAnimation(.easeOut(duration: 3)) {
+                    showLoadingScreen = false
+                }
             }
         }
         .fullScreenCover(isPresented: $isSettingsShown) {
-            SettingsView()
+            TabBarView()
         }
         .ignoresSafeArea()
     }
