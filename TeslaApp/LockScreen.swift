@@ -33,9 +33,7 @@ struct LockScreen: View {
             .frame(height: 260)
             .offset(y: isLocked ? 0 : 30)
         
-            .shadow(color: isLocked ? .black : .black, radius: 40, x: 0, y: 0)
-            .shadow(color: isLocked ? .black : .unlockedCarGradient.opacity(0.5), radius: 50, x: 0, y: -15)
-            
+            .shadow(color: isLocked ? .black : .black.opacity(0.5), radius: 40, x: 0, y: 0) 
     }
     
     var settingsButton: some View {
@@ -83,8 +81,15 @@ struct LockScreen: View {
                 } else {
                     RoundedRectangle(cornerRadius: 40)
                         .fill(.appBackground)
-                        .neomorphismSelectedStyle()
                         .frame(width: 180, height: 80)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 40)
+                                .stroke(Color.appBackground.opacity(0.1), lineWidth: 10)
+                                .shadow(color: .white.opacity(0.1), radius: 3, x: -5, y: -5)
+                                .shadow(color: .black, radius: 3, x: 4, y: 5)
+                                .shadow(color: .black, radius: 5, x: 4, y: 5)
+                                .clipShape(RoundedRectangle(cornerRadius: 50))
+                        }
                 }
                 
                 

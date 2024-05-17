@@ -114,7 +114,14 @@ struct SettingsView: View {
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 50).fill(.appBackground))
-            .neomorphismSelectedStyle()
+            .overlay {
+                RoundedRectangle(cornerRadius: 50)
+                    .stroke(Color.appBackground.opacity(0.1), lineWidth: 10)
+                    .shadow(color: .white.opacity(0.1), radius: 3, x: -5, y: -5)
+                    .shadow(color: .black, radius: 3, x: 4, y: 5)
+                    .shadow(color: .black, radius: 5, x: 4, y: 5)
+                    .clipShape(RoundedRectangle(cornerRadius: 50))
+            }
         }
         .frame(width: 300)
     }

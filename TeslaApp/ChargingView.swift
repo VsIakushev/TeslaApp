@@ -155,5 +155,4 @@ struct ChargingView: View {
 
 #Preview {
         ChargingView()
-
 }

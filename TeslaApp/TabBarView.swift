@@ -51,7 +51,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 0
                                 }
-                            }, label: {
+                            },
+                                   label: {
                                 Image(systemName: "car")
                                     .resizable()
                                     .scaledToFit()
@@ -67,7 +68,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 1
                                 }
-                            }, label: {
+                            }, 
+                                   label: {
                                 Image(systemName: "bolt.fill")
                                     .resizable()
                                     .scaledToFit()
@@ -85,7 +87,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 2
                                 }
-                            }, label: {
+                            },
+                                   label: {
                                 Image(systemName: "mappin.and.ellipse")
                                     .resizable()
                                     .scaledToFit()
@@ -101,7 +104,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 3
                                 }
-                            }, label: {
+                            }, 
+                                   label: {
                                 Image(systemName: "person.fill")
                                     .resizable()
                                     .scaledToFit()
@@ -111,9 +115,6 @@ struct TabBarView: View {
                                     .frame(width: 25, height: 25)
                                     .padding()
                             })
-                            
-                            
-                            
                         }
                     }
             }

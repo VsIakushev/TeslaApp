@@ -28,7 +28,7 @@ struct SuperchargersView: View {
                 HStack {
                     Text("Nearby Superchargers")
                         .font(.system(size: 20))
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.9))
                         .bold()
                         .padding(.leading, 25)
                     Spacer()
@@ -57,14 +57,14 @@ struct SuperchargersView: View {
             }
         }
         .frame(width: UIScreen.main.bounds.width - 60)
-        .frame(height: isExpanded ? 260 : 90)
+        .frame(height: isExpanded ? 240 : 90)
     }
 }
 
 #Preview {
     ZStack {
         BackgroundView()
-        SuperchargersView(isExpanded: .constant(false), chargerCities: .constant([.init(city: "Sacramento, CA", availableChargers: 7, totalChargers: 16, distanceToClosestCharger: 2.4), .init(city: "San-Francisco, CA", availableChargers: 17, totalChargers: 32, distanceToClosestCharger: 96.2)]))
+        SuperchargersView(isExpanded: .constant(true), chargerCities: .constant([.init(city: "Sacramento, CA", availableChargers: 7, totalChargers: 16, distanceToClosestCharger: 2.4), .init(city: "San-Francisco, CA", availableChargers: 17, totalChargers: 32, distanceToClosestCharger: 96.2)]))
     }
     
 }
