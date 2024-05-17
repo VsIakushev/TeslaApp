@@ -124,5 +124,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView()
+        TabBarView()
 }

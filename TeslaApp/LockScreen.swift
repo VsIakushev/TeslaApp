@@ -77,12 +77,12 @@ struct LockScreen: View {
                 
                 if isLocked {
                     RoundedRectangle(cornerRadius: 40)
-                        .fill(isLocked ? .appBackground.opacity(0.3) : .appBackground)
+                        .fill(.appBackground.opacity(0.3))
                         .neomorphismUnSelectedStyle()
                         .frame(width: 180, height: 80)
                 } else {
                     RoundedRectangle(cornerRadius: 40)
-                        .fill(isLocked ? .black : .appBackground)
+                        .fill(.appBackground)
                         .neomorphismSelectedStyle()
                         .frame(width: 180, height: 80)
                 }
@@ -150,5 +150,5 @@ struct LockScreen: View {
 }
 
 #Preview {
-    LockScreen()
+        LockScreen()
 }

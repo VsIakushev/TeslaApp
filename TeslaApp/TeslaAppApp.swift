@@ -13,6 +13,7 @@ struct TeslaAppApp: App {
         WindowGroup {
             LockScreen()
                 .environment(\.colorScheme, .dark)
+                .preferredColorScheme(.dark)
         }
     }
 }

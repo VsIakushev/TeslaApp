@@ -77,7 +77,7 @@ struct BatteryView: View {
 
 
 #Preview {
-    BatteryView(progress: .constant(0.6))
+        BatteryView(progress: .constant(0.6))
 }
 
 

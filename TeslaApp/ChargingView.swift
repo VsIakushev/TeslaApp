@@ -11,6 +11,14 @@ struct ChargingView: View {
     
     @State var showSupportAlert = false
     @State var chargingProgress: CGFloat = 0.7
+    @State var isSuperchargersExpanded = false
+    
+    @State private var chargerCities: [SuperchargerCity] = [
+        .init(city: "Sacramento, CA", availableChargers: 7, totalChargers: 16, distanceToClosestCharger: 2.4),
+        .init(city: "Stockton, CA", availableChargers: 3, totalChargers: 5, distanceToClosestCharger: 45.7),
+        .init(city: "San-Francisco, CA", availableChargers: 17, totalChargers: 32, distanceToClosestCharger: 82.2),
+        .init(city: "San-Jose, CA", availableChargers: 11, totalChargers: 24, distanceToClosestCharger: 96.7)
+    ]
     
     var gradient: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
@@ -53,9 +61,9 @@ struct ChargingView: View {
         Image("teslaBattery")
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(height: 150)
+            .frame(height: 120)
             .padding(.horizontal)
-            .padding(.vertical, 20)
+            .padding(.top, 30)
             .shadow(color: .white.opacity(0.5), radius: 15, x: 10, y: 10)
     }
     
@@ -106,7 +114,6 @@ struct ChargingView: View {
     }
     
     var body: some View {
-
         ZStack {
             if showSupportAlert {
                 SupportAlertView(showAlert: $showSupportAlert)
@@ -114,40 +121,39 @@ struct ChargingView: View {
                     .zIndex(1)
                     .padding(.bottom, 200)
             }
+            
             BackgroundView()
 
             VStack {
                 header
-                carImageView
-                percentageLabels
-                BatteryView(progress: $chargingProgress)
-                chargingGoals
-                batterySliderView(value: $chargingProgress)
-                    .padding(.bottom, 5)
-                Text("Set Charge Limit")
-                    .font(.system(size: 13))
-                    .foregroundColor(.white.opacity(0.8))
-
-                Spacer()
+                    carImageView
+                    percentageLabels
+                    BatteryView(progress: $chargingProgress)
+                    chargingGoals
+                    batterySliderView(value: $chargingProgress)
+                        .padding(.bottom, 5)
+                    Text("Set Charge Limit")
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                        .padding(.bottom)
                 
+                SuperchargersView(isExpanded: $isSuperchargersExpanded, chargerCities: $chargerCities)
+                
+                Spacer()
             }
             .blur(radius: showSupportAlert ? 5 : 0)
             .disabled(showSupportAlert)
-        
         }
-        
-        
     }
     
     private func calculateProgressToString() -> String {
         String(Int(chargingProgress * 100))
-        
     }
     
     @Environment (\.presentationMode) var presentation
-    
 }
 
 #Preview {
-    ChargingView()
+        ChargingView()
+
 }
