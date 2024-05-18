@@ -7,25 +7,64 @@
 
 import SwiftUI
 
+/// Application Lock Screen
 struct LockScreen: View {
+    
+    var body: some View {
+        ZStack {
+            if showLoadingScreen {
+                LoadingView()
+            } else {
+                
+                isLocked ? lockedGradient : unlockedGradient
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        settingsButton
+                            .padding(20)
+                            .padding(.trailing, 20)
+                    }
+                    .padding(.top,65)
+                    
+                    welcomeLabelView
+                    carImage
+                    Spacer()
+                    lockButtonView
+                }
+            }
+            
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.6) {
+                withAnimation(.easeOut(duration: 3)) {
+                    showLoadingScreen = false
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $isSettingsShown) {
+            TabBarView()
+        }
+        .ignoresSafeArea()
+    }
     
     @State private var isLocked = true
     @State private var isSettingsShown = false
     @State private var showLoadingScreen = true
     
-    var gradientButton: LinearGradient {
+    private var gradientButton: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
     }
     
-    var lockedGradient: LinearGradient {
+    private var lockedGradient: LinearGradient {
         LinearGradient(colors: [.lockedTop, .black, .black, .lockedBottom], startPoint: .top, endPoint: .bottom)
     }
     
-    var unlockedGradient: LinearGradient {
+    private var unlockedGradient: LinearGradient {
         LinearGradient(colors: [.unlockedTop, .unlockedBottom], startPoint: .top, endPoint: .bottom)
     }
     
-    var carImage: some View {
+    private var carImage: some View {
         Image(isLocked ? "tsla" : "teslaWhite")
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -36,7 +75,7 @@ struct LockScreen: View {
             .shadow(color: isLocked ? .black : .black.opacity(0.5), radius: 40, x: 0, y: 0) 
     }
     
-    var settingsButton: some View {
+    private var settingsButton: some View {
         Button {
             withAnimation(.easeOut(duration: 1)) {
                 isSettingsShown.toggle()
@@ -49,7 +88,7 @@ struct LockScreen: View {
         }
     }
     
-    var welcomeLabelView: some View {
+    private var welcomeLabelView: some View {
         VStack {
             Text("Hi, Vitalii")
                 .foregroundColor(.white)
@@ -65,7 +104,7 @@ struct LockScreen: View {
         }
     }
     
-    var lockButtonView: some View {
+    private var lockButtonView: some View {
         Button {
             withAnimation(.easeOut(duration: 1.5)) {
                 isLocked.toggle()
@@ -112,45 +151,6 @@ struct LockScreen: View {
             }
             .padding(.bottom, 100)
         }
-    }
-    
-    var body: some View {
-        ZStack {
-            
-            if showLoadingScreen {
-                LoadingView()
-            } else {
-                
-                isLocked ? lockedGradient : unlockedGradient
-                
-                VStack {
-                    HStack {
-                        Spacer()
-                        settingsButton
-                            .padding(20)
-                            .padding(.trailing, 20)
-                    }
-                    .padding(.top,65)
-                    
-                    welcomeLabelView
-                    carImage
-                    Spacer()
-                    lockButtonView
-                }
-            }
-            
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.6) {
-                withAnimation(.easeOut(duration: 3)) {
-                    showLoadingScreen = false
-                }
-            }
-        }
-        .fullScreenCover(isPresented: $isSettingsShown) {
-            TabBarView()
-        }
-        .ignoresSafeArea()
     }
 }
 

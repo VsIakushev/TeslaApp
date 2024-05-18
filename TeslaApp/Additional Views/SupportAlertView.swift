@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Alert with link to Support website
 struct SupportAlertView: View {
     @Binding var showAlert: Bool
     

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Element view for superchargers list
 struct ChargerCityView: View {
     @State var city: String
     @State var availableChargers: Int

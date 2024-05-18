@@ -7,42 +7,13 @@
 
 import SwiftUI
 
+/// Bottom Sheet View for additional settings on Climate Settings Screen
 struct BottomSheetView: View {
-    @GestureState private var gestureOffset = CGSize.zero
-    @State private var currentMenuOffsetY: CGFloat = 0.0
-    @State private var lastMenuOffsetY: CGFloat = 0.0
-    
     @Binding var isAcOn: Bool
     @Binding var color: Color
     @Binding var temperature: Double
     @Binding var minTemperature: Double
     @Binding var maxTemperature: Double
-    
-    var dragGesture: some Gesture {
-        DragGesture()
-            .updating($gestureOffset) { value, state, transaction in
-                state = value.translation
-                onChangeMenuOffset()
-            }
-            .onEnded { value in
-                let maxHeight: CGFloat = 130
-                withAnimation {
-                    if -currentMenuOffsetY > maxHeight / 2 {
-                        currentMenuOffsetY = -maxHeight
-                    } else {
-                        currentMenuOffsetY = 0
-                    }
-                    lastMenuOffsetY = currentMenuOffsetY
-                }
-            }
-    }
-    
-    private func onChangeMenuOffset() {
-        DispatchQueue.main.async {
-            currentMenuOffsetY = gestureOffset.height + lastMenuOffsetY
-        }
-    }
-    
     
     var body: some View {
         VStack {
@@ -158,4 +129,32 @@ struct BottomSheetView: View {
         .opacity(0.9)
     }
     
+    @GestureState private var gestureOffset = CGSize.zero
+    @State private var currentMenuOffsetY: CGFloat = 0.0
+    @State private var lastMenuOffsetY: CGFloat = 0.0
+    
+    private var dragGesture: some Gesture {
+        DragGesture()
+            .updating($gestureOffset) { value, state, transaction in
+                state = value.translation
+                onChangeMenuOffset()
+            }
+            .onEnded { value in
+                let maxHeight: CGFloat = 130
+                withAnimation {
+                    if -currentMenuOffsetY > maxHeight / 2 {
+                        currentMenuOffsetY = -maxHeight
+                    } else {
+                        currentMenuOffsetY = 0
+                    }
+                    lastMenuOffsetY = currentMenuOffsetY
+                }
+            }
+    }
+    
+    private func onChangeMenuOffset() {
+        DispatchQueue.main.async {
+            currentMenuOffsetY = gestureOffset.height + lastMenuOffsetY
+        }
+    }
 }

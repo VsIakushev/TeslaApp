@@ -7,21 +7,50 @@
 
 import SwiftUI
 
+/// Climate Settings Screen
 struct ClimateSettingsView: View {
+    
+    var body: some View {
+        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
+            BackgroundView()
+            if showSupportAlert {
+                SupportAlertView(showAlert: $showSupportAlert)
+                    .transition(.move(edge: .top).combined(with: .scale(scale: 0.1, anchor: .topTrailing)).combined(with: .opacity))
+                    .zIndex(1)
+            }
+
+            VStack {
+                header
+                Spacer().frame(height: 100)
+                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, interfaceColor: $interfaceColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
+        
+                settingsView
+                
+                Spacer()
+            }
+            .blur(radius: showSupportAlert ? 5 : 0)
+            .disabled(showSupportAlert)
+            
+        }
+        .overlay {
+            BottomSheetView(isAcOn: $isClimateControlsIsEnabled, color: $interfaceColor, temperature: $temperature, minTemperature: $minTemperature, maxTemperature: $maxTemperature)
+                .blur(radius: showSupportAlert ? 5 : 0)
+                .disabled(showSupportAlert)
+        }
+    }
+    
+    @Environment (\.presentationMode) private var presentation
     
     @State private var temperature = 15.0
     @State private var circleProgress: CGFloat = 0.1
+    @State private var minTemperature = 15.0
+    @State private var maxTemperature = 30.0
+    @State private var isClimateControlsIsEnabled = false
+    @State private var isSettingsExpanded = true
+    @State private var showSupportAlert = false
+    @State private var interfaceColor: Color = .gradientTop
     
-    @State var minTemperature = 15.0
-    @State var maxTemperature = 30.0
-    
-    @State var isClimateControlsIsEnabled = false
-    @State var isSettingsExpanded = true
-    @State var showSupportAlert = false
-    
-    @State var interfaceColor: Color = .gradientTop
-    
-    var header: some View {
+    private var header: some View {
         HStack {
             Button {
                 withAnimation {
@@ -54,11 +83,11 @@ struct ClimateSettingsView: View {
         .padding(.horizontal, 40)
     }
     
-    var gradient: LinearGradient {
+    private var gradient: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
     }
     
-    var settingsView: some View {
+    private var settingsView: some View {
         DisclosureGroup(isExpanded: $isSettingsExpanded) {
             HStack {
                 Text("Ac")
@@ -160,37 +189,6 @@ struct ClimateSettingsView: View {
         
         
     }
-    
-    var body: some View {
-        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
-            BackgroundView()
-            if showSupportAlert {
-                SupportAlertView(showAlert: $showSupportAlert)
-                    .transition(.move(edge: .top).combined(with: .scale(scale: 0.1, anchor: .topTrailing)).combined(with: .opacity))
-                    .zIndex(1)
-            }
-
-            VStack {
-                header
-                Spacer().frame(height: 100)
-                TemperatureTwisterView(temperature: $temperature, circleProgress: $circleProgress, interfaceColor: $interfaceColor, minTemperature: $minTemperature, maxTemperature: $maxTemperature, isEnabled: $isClimateControlsIsEnabled)
-        
-                settingsView
-                
-                Spacer()
-            }
-            .blur(radius: showSupportAlert ? 5 : 0)
-            .disabled(showSupportAlert)
-            
-        }
-        .overlay {
-            BottomSheetView(isAcOn: $isClimateControlsIsEnabled, color: $interfaceColor, temperature: $temperature, minTemperature: $minTemperature, maxTemperature: $maxTemperature)
-                .blur(radius: showSupportAlert ? 5 : 0)
-                .disabled(showSupportAlert)
-        }
-    }
-    
-    @Environment (\.presentationMode) var presentation
 }
 
 #Preview {

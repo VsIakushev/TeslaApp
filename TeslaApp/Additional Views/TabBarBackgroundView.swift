@@ -12,7 +12,7 @@ import SwiftUI
         .background(.white)
     
 }
-
+/// Custum shaped view for Tabbar's background
 struct TabBarBackgroundView: View {
     
     var body: some View {
@@ -23,7 +23,6 @@ struct TabBarBackgroundView: View {
                 let maxX = proxy.frame(in: .local).maxX
                 let maxY = proxy.frame(in: .local).maxY
                 let minX = proxy.frame(in: .local).minX
-                
                 
                 Path { path in
                     path.move(to: CGPoint(x: minX, y: maxY))
@@ -42,10 +41,8 @@ struct TabBarBackgroundView: View {
                 .foregroundColor(.black.opacity(0.9))
                 .shadow(color: .white.opacity(0.15), radius: 2, x: -1, y: -2)
             }
-
         }
         .frame(width: UIScreen.main.bounds.width, height: 100)
         .edgesIgnoringSafeArea(.bottom)
-        
     }
 }

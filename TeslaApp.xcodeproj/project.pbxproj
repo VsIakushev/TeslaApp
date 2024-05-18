@@ -90,10 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				572550352BF2FFAC007DA2C6 /* TeslaAppApp.swift */,
+				572550CD2BF691F3007DA2C6 /* LoadingView.swift */,
 				572550472BF3274E007DA2C6 /* LockScreen.swift */,
 				572550372BF2FFAC007DA2C6 /* SettingsView.swift */,
 				5725504B2BF3FB8E007DA2C6 /* ClimateSettingsView.swift */,
-				572550CD2BF691F3007DA2C6 /* LoadingView.swift */,
 				572550D32BF6CCA4007DA2C6 /* TabBarView.swift */,
 				572550D52BF6CD1F007DA2C6 /* ChargingView.swift */,
 				572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */,

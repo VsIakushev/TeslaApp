@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/// Slider element for Climate Settings
 struct sliderView: View {
     @Binding var value: Double
     @Binding var minSliderValue: Double
@@ -48,12 +48,9 @@ struct sliderView: View {
     }
 }
 
+/// Slider element for Battery Charging Settings
 struct batterySliderView: View {
     @Binding var value: CGFloat
-    @State private var minSliderValue: Double = 0
-    @State private var maxSliderValue: Double = 1
-    
-    @State private var sliderWidth: CGFloat = 270
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
@@ -80,9 +77,12 @@ struct batterySliderView: View {
         }
     }
     
+    @State private var minSliderValue: Double = 0
+    @State private var maxSliderValue: Double = 1
+    @State private var sliderWidth: CGFloat = 270
+    
     private func calculateOffset() -> CGFloat {
        return CGFloat((value - minSliderValue) / (maxSliderValue - minSliderValue) * sliderWidth)
-        
     }
 }
 

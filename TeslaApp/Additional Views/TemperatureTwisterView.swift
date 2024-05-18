@@ -7,15 +7,14 @@
 
 import SwiftUI
 
+/// Twister Element for Climate Settings
 struct TemperatureTwisterView: View {
     
     @Binding var temperature: Double
     @Binding var circleProgress: CGFloat
     @Binding var interfaceColor: Color
-    
     @Binding var minTemperature: Double
     @Binding var maxTemperature: Double
-    
     @Binding var isEnabled: Bool
     
     var body: some View {

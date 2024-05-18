@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Superchargers list view
 struct SuperchargersView: View {
     
     @Binding var isExpanded: Bool
