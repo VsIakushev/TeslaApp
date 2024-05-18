@@ -26,6 +26,10 @@
 		572550D82BF6DB09007DA2C6 /* InDevelopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */; };
 		572550DA2BF6FA51007DA2C6 /* SupportAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550D92BF6FA51007DA2C6 /* SupportAlertView.swift */; };
 		572550DC2BF70146007DA2C6 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572550DB2BF70146007DA2C6 /* BatteryView.swift */; };
+		572551062BF7E381007DA2C6 /* SuperchargersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572551052BF7E381007DA2C6 /* SuperchargersView.swift */; };
+		57A4C57C2BF7FEAD005E88F4 /* Supercharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57B2BF7FEAD005E88F4 /* Supercharger.swift */; };
+		57A4C57E2BF811E0005E88F4 /* ChargerCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57D2BF811E0005E88F4 /* ChargerCityView.swift */; };
+		57A4C5802BF81B60005E88F4 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4C57F2BF81B60005E88F4 /* PlusButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDevelopingView.swift; sourceTree = "<group>"; };
 		572550D92BF6FA51007DA2C6 /* SupportAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAlertView.swift; sourceTree = "<group>"; };
 		572550DB2BF70146007DA2C6 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		572551052BF7E381007DA2C6 /* SuperchargersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperchargersView.swift; sourceTree = "<group>"; };
+		57A4C57B2BF7FEAD005E88F4 /* Supercharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supercharger.swift; sourceTree = "<group>"; };
+		57A4C57D2BF811E0005E88F4 /* ChargerCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargerCityView.swift; sourceTree = "<group>"; };
+		57A4C57F2BF81B60005E88F4 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,15 +90,16 @@
 			isa = PBXGroup;
 			children = (
 				572550352BF2FFAC007DA2C6 /* TeslaAppApp.swift */,
+				572550CD2BF691F3007DA2C6 /* LoadingView.swift */,
 				572550472BF3274E007DA2C6 /* LockScreen.swift */,
 				572550372BF2FFAC007DA2C6 /* SettingsView.swift */,
 				5725504B2BF3FB8E007DA2C6 /* ClimateSettingsView.swift */,
-				572550CD2BF691F3007DA2C6 /* LoadingView.swift */,
 				572550D32BF6CCA4007DA2C6 /* TabBarView.swift */,
 				572550D52BF6CD1F007DA2C6 /* ChargingView.swift */,
 				572550D72BF6DB09007DA2C6 /* InDevelopingView.swift */,
 				5725504D2BF3FD32007DA2C6 /* Additional Views */,
 				5725504E2BF3FD3D007DA2C6 /* Supporting Files */,
+				57A4C57A2BF7FE94005E88F4 /* Models */,
 				572550392BF2FFAE007DA2C6 /* Assets.xcassets */,
 				5725503B2BF2FFAE007DA2C6 /* Preview Content */,
 			);
@@ -111,10 +120,13 @@
 				5725504F2BF3FD71007DA2C6 /* BackgroundView.swift */,
 				572550D12BF6CB4B007DA2C6 /* TabBarBackgroundView.swift */,
 				572550DB2BF70146007DA2C6 /* BatteryView.swift */,
+				572551052BF7E381007DA2C6 /* SuperchargersView.swift */,
 				572550D92BF6FA51007DA2C6 /* SupportAlertView.swift */,
+				57A4C57D2BF811E0005E88F4 /* ChargerCityView.swift */,
 				572550512BF416DA007DA2C6 /* TemperatureTwisterView.swift */,
 				572550552BF433E3007DA2C6 /* SliderView.swift */,
 				5725505B2BF4843F007DA2C6 /* BottomSheetView.swift */,
+				57A4C57F2BF81B60005E88F4 /* PlusButton.swift */,
 			);
 			path = "Additional Views";
 			sourceTree = "<group>";
@@ -126,6 +138,14 @@
 				572550492BF3E3EF007DA2C6 /* NeomorphismSettings.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57A4C57A2BF7FE94005E88F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57A4C57B2BF7FEAD005E88F4 /* Supercharger.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,12 +229,16 @@
 				572550D82BF6DB09007DA2C6 /* InDevelopingView.swift in Sources */,
 				572550D22BF6CB4B007DA2C6 /* TabBarBackgroundView.swift in Sources */,
 				572550522BF416DA007DA2C6 /* TemperatureTwisterView.swift in Sources */,
+				57A4C5802BF81B60005E88F4 /* PlusButton.swift in Sources */,
 				572550562BF433E3007DA2C6 /* SliderView.swift in Sources */,
+				57A4C57C2BF7FEAD005E88F4 /* Supercharger.swift in Sources */,
 				572550442BF313CD007DA2C6 /* Buttons.swift in Sources */,
 				572550502BF3FD71007DA2C6 /* BackgroundView.swift in Sources */,
 				5725504A2BF3E3EF007DA2C6 /* NeomorphismSettings.swift in Sources */,
 				572550362BF2FFAC007DA2C6 /* TeslaAppApp.swift in Sources */,
 				5725504C2BF3FB8E007DA2C6 /* ClimateSettingsView.swift in Sources */,
+				572551062BF7E381007DA2C6 /* SuperchargersView.swift in Sources */,
+				57A4C57E2BF811E0005E88F4 /* ChargerCityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +380,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,6 +410,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

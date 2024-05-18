@@ -7,11 +7,8 @@
 
 import SwiftUI
 
+/// Application Lading Screen
 struct LoadingView: View {
-    
-    @State var progress: CGFloat = 0.0
-    @State var whiteShadowisShown = false
-    @State var showView = false
     
     var body: some View {
         ZStack {
@@ -23,15 +20,13 @@ struct LoadingView: View {
                             .fill(.white.opacity(0.3))
                             .blur(radius: 20)
                             .shadow(color: .white.opacity(0.4), radius: 20, y: -55)
-                        
                     }
                     
                     Group {
                         topLineShadowLeft()
                             .trim(from: 0, to: progress)
                             .stroke(.gradientTop, style: StrokeStyle(lineWidth: 5))
-                        
-                        
+                     
                         topLineShadowRight()
                             .trim(from: 0, to: progress)
                             .stroke(.gradientTop, style: StrokeStyle(lineWidth: 5))
@@ -48,19 +43,16 @@ struct LoadingView: View {
                     .shadow(color: .gradientTop, radius: 5)
                     .blur(radius: 8.0)
                     
-                    
                     topLine()
                         .fill(Color.black.opacity(0.4))
                         .shadow(color: .white.opacity(0.3), radius: 4, x: -3, y: -3)
                         .shadow(color: .black, radius: 4, x: 5, y: 5)
-                    
                     
                     bottomLine()
                         .fill(Color.black.opacity(0.4))
                         .shadow(color: .white.opacity(0.3), radius: 7, x: -5, y: -5)
                         .shadow(color: .black, radius: 7, x: 5, y: 5)
                         .blur(radius: 0.5)
-                    
                     
                 }
                 .frame(width: 360, height: 360)
@@ -88,27 +80,17 @@ struct LoadingView: View {
             }
         }
     }
+    
+    @State private var progress: CGFloat = 0.0
+    @State private var whiteShadowisShown = false
+    @State private var showView = false
 }
 
 #Preview {
     LoadingView()
 }
 
-struct TeslaRoundedBottomRectangleView: Shape {
-    var curveOffset: CGFloat = -100
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.maxX, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.maxY), control: CGPoint(x: rect.width / 2, y: rect.maxY + curveOffset))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
-        path.closeSubpath()
-        
-        return path
-    }
-}
-
+/// Logo Top element shape
 struct topLine: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -123,7 +105,7 @@ struct topLine: Shape {
 }
 
 
-
+/// Logo Bottom element shape
 struct bottomLine: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -148,7 +130,7 @@ struct bottomLine: Shape {
     }
 }
 
-
+/// Logo Top element left half shape
 struct topLineShadowLeft: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -161,6 +143,7 @@ struct topLineShadowLeft: Shape {
     }
 }
 
+/// Logo Top element right half shape
 struct topLineShadowRight: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -173,6 +156,23 @@ struct topLineShadowRight: Shape {
     }
 }
 
+/// Logo bottom element left half shape
+struct bottomLineShadowLeft: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY + 80))
+        path.addQuadCurve(to: CGPoint(x: rect.midX - 37, y: rect.minY + 35), control: CGPoint(x: rect.midX - 20, y: rect.minY + 70))
+        path.addQuadCurve(to: CGPoint(x: rect.minX + 17, y: rect.minY + 68), control: CGPoint(x: rect.midX / 2, y: rect.minY + 37))
+        path.addQuadCurve(to: CGPoint(x: rect.minX + 63, y: rect.minY + 102), control: CGPoint(x: rect.minX + 30, y: rect.minY + 90))
+        path.addQuadCurve(to: CGPoint(x: rect.midX - 50, y: rect.minY + 77), control: CGPoint(x: rect.midX - 115, y: rect.minY + 70))
+        
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.midX - 15, y: rect.midY))
+        
+        return path
+    }
+}
+
+/// Logo bottom element right half shape
 struct bottomLineShadowRight: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -190,21 +190,7 @@ struct bottomLineShadowRight: Shape {
     }
 }
 
-struct bottomLineShadowLeft: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY + 80))
-        path.addQuadCurve(to: CGPoint(x: rect.midX - 37, y: rect.minY + 35), control: CGPoint(x: rect.midX - 20, y: rect.minY + 70))
-        path.addQuadCurve(to: CGPoint(x: rect.minX + 17, y: rect.minY + 68), control: CGPoint(x: rect.midX / 2, y: rect.minY + 37))
-        path.addQuadCurve(to: CGPoint(x: rect.minX + 63, y: rect.minY + 102), control: CGPoint(x: rect.minX + 30, y: rect.minY + 90))
-        path.addQuadCurve(to: CGPoint(x: rect.midX - 50, y: rect.minY + 77), control: CGPoint(x: rect.midX - 115, y: rect.minY + 70))
-        
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.midX - 15, y: rect.midY))
-        
-        return path
-    }
-}
-
+/// Shape for white flash animation
 struct triangleSHadow: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()

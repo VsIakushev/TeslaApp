@@ -7,17 +7,8 @@
 
 import SwiftUI
 
+/// Application's Tabbar Screen
 struct TabBarView: View {
-    
-    @State private var selectedTab = 0
-    
-    var gradientButton: LinearGradient {
-        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
-    }
-    
-    var gradientButtonUnselected: LinearGradient {
-        LinearGradient(colors: [.white.opacity(0.7), .white.opacity(0.6)], startPoint: .top, endPoint: .bottom)
-    }
     
     var body: some View {
         VStack {
@@ -32,13 +23,7 @@ struct TabBarView: View {
                 UnderDevelopmentView()
             default:
                 EmptyView()
-                
-                
             }
-                
-            
-            
-            
         }
         .edgesIgnoringSafeArea(.bottom)
         .overlay {
@@ -51,7 +36,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 0
                                 }
-                            }, label: {
+                            },
+                                   label: {
                                 Image(systemName: "car")
                                     .resizable()
                                     .scaledToFit()
@@ -61,13 +47,13 @@ struct TabBarView: View {
                                     .frame(width: 25, height: 25)
                                     .padding()
                             })
-
-                            
+                 
                             Button(action: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 1
                                 }
-                            }, label: {
+                            }, 
+                                   label: {
                                 Image(systemName: "bolt.fill")
                                     .resizable()
                                     .scaledToFit()
@@ -79,13 +65,20 @@ struct TabBarView: View {
                             })
                             
                             Spacer()
-                                .frame(width: 90)
+                                .frame(width: 11)
+                            
+                            PlusButton()
+                                .offset(y: -55)
+                            
+                            Spacer()
+                                .frame(width: 11)
                             
                             Button(action: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 2
                                 }
-                            }, label: {
+                            },
+                                   label: {
                                 Image(systemName: "mappin.and.ellipse")
                                     .resizable()
                                     .scaledToFit()
@@ -101,7 +94,8 @@ struct TabBarView: View {
                                 withAnimation(.easeInOut(duration: 0.4)) {
                                     selectedTab = 3
                                 }
-                            }, label: {
+                            }, 
+                                   label: {
                                 Image(systemName: "person.fill")
                                     .resizable()
                                     .scaledToFit()
@@ -111,9 +105,6 @@ struct TabBarView: View {
                                     .frame(width: 25, height: 25)
                                     .padding()
                             })
-                            
-                            
-                            
                         }
                     }
             }
@@ -121,8 +112,18 @@ struct TabBarView: View {
             .edgesIgnoringSafeArea(.bottom)
         }
     }
+    
+    @State private var selectedTab = 0
+    
+    private var gradientButton: LinearGradient {
+        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
+    }
+    
+    private var gradientButtonUnselected: LinearGradient {
+        LinearGradient(colors: [.white.opacity(0.7), .white.opacity(0.6)], startPoint: .top, endPoint: .bottom)
+    }
 }
 
 #Preview {
-    TabBarView()
+        TabBarView()
 }

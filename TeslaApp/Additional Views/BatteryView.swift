@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+/// Battery element view
 struct BatteryView: View {
     
     struct BatteryShape: Shape {
@@ -38,7 +40,7 @@ struct BatteryView: View {
             .shadow(color: .white.opacity(0.4), radius: 4, y: -3)
             .shadow(color: .black.opacity(0.4), radius: 4, x: 3, y: 3)
             .overlay {
-                // Заливка цветом
+                /// Color filing
                 BatteryShape()
                     .fill(LinearGradient(colors: [
                         .gradientTop.opacity(0.9),
@@ -54,7 +56,7 @@ struct BatteryView: View {
                         }
                     }
                 
-                // Тень
+                /// Color Shadow
                 Rectangle()
                     .fill(LinearGradient(colors: [
                         .gradientTop.opacity(0.5),
@@ -77,7 +79,7 @@ struct BatteryView: View {
 
 
 #Preview {
-    BatteryView(progress: .constant(0.6))
+        BatteryView(progress: .constant(0.6))
 }
 
 

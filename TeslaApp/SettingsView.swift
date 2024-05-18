@@ -7,27 +7,39 @@
 
 import SwiftUI
 
+/// Settings Screen
 struct SettingsView: View {
     
-    @State var tagSelected = 0
-    @State var isCarClose = false
-    
-    @State private var showClimateSettings = false
-    
-    func backgroundStackView<Content: View>(content: ()->Content) -> some View {
-        ZStack {
-            Rectangle()
-                .fill(LinearGradient(colors: [.unlockedTop, .unlockedBottom], startPoint: .top, endPoint: .bottom))
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-                .ignoresSafeArea(.all)
-            content()
+    var body: some View {
+        backgroundStackView {
+            VStack {
+                headerView
+                carView
+                controllPanelView
+                Spacer()
+                    .frame(height: 40)
+                if tagSelected == 1 {
+                    closedCarControllView
+                }
+
+                Spacer()
+            }
+            .fullScreenCover(isPresented: $showClimateSettings) {
+                ClimateSettingsView()
+                
+            }
         }
     }
-    var unlockedGradient: LinearGradient {
+    
+    @State private var tagSelected = 0
+    @State private var isCarClose = false
+    @State private var showClimateSettings = false
+    
+    private var unlockedGradient: LinearGradient {
         LinearGradient(colors: [.unlockedTop, .unlockedBottom], startPoint: .top, endPoint: .bottom)
     }
     
-    var headerView: some View {
+    private var headerView: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("Tesla")
@@ -47,7 +59,7 @@ struct SettingsView: View {
         .padding(25)
     }
     
-    var carView: some View {
+    private var carView: some View {
         Image(isCarClose ? "closeCar" : "closeCar")
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -57,15 +69,15 @@ struct SettingsView: View {
             .shadow(color: .white.opacity(0.5), radius: 15, x: 10, y: 10)
     }
     
-    var gradient: LinearGradient {
+    private var gradient: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .bottom, endPoint: .top)
     }
     
-    var gradientButton: LinearGradient {
+    private var gradientButton: LinearGradient {
         LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .top, endPoint: .bottom)
     }
     
-    var controllPanelView: some View {
+    private var controllPanelView: some View {
         HStack (spacing: 30) {
             ForEach(1..<5) { index in
                 Button {
@@ -95,7 +107,7 @@ struct SettingsView: View {
         .neomorphismUnSelectedStyle()
     }
     
-    var closedCarControllView: some View {
+    private var closedCarControllView: some View {
         Button {
             isCarClose.toggle()
         } label: {
@@ -114,31 +126,27 @@ struct SettingsView: View {
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 50).fill(.appBackground))
-            .neomorphismSelectedStyle()
+            .overlay {
+                RoundedRectangle(cornerRadius: 50)
+                    .stroke(Color.appBackground.opacity(0.1), lineWidth: 10)
+                    .shadow(color: .white.opacity(0.1), radius: 3, x: -5, y: -5)
+                    .shadow(color: .black, radius: 3, x: 4, y: 5)
+                    .shadow(color: .black, radius: 5, x: 4, y: 5)
+                    .clipShape(RoundedRectangle(cornerRadius: 50))
+            }
         }
         .frame(width: 300)
     }
     
-    var body: some View {
-        backgroundStackView {
-            VStack {
-                headerView
-                carView
-                controllPanelView
-                Spacer()
-                    .frame(height: 40)
-                if tagSelected == 1 {
-                    closedCarControllView
-                }
-
-                Spacer()
-            }
-            .fullScreenCover(isPresented: $showClimateSettings) {
-                ClimateSettingsView()
-                
-            }
+    private func backgroundStackView<Content: View>(content: ()->Content) -> some View {
+        ZStack {
+            Rectangle()
+                .fill(LinearGradient(colors: [.unlockedTop, .unlockedBottom], startPoint: .top, endPoint: .bottom))
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+                .ignoresSafeArea(.all)
+            content()
         }
-    }
+    }  
 }
 
 #Preview {
