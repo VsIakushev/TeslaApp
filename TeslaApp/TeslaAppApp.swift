@@ -1,6 +1,5 @@
 //
 //  TeslaAppApp.swift
-//  TeslaApp
 //
 //  Created by Vitaliy Iakushev on 13.05.2024.
 //
