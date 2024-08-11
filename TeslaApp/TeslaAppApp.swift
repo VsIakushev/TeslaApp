@@ -3,6 +3,7 @@
 //
 //  Created by Vitaliy Iakushev on 13.05.2024.
 //  Измененная строка для теста
+//  Вторая новая строка для теста
 
 import SwiftUI
 
